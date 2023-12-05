@@ -305,6 +305,35 @@ body {
   background-color: var(--blue);
   color: var(--white);
 }
+
+/* Desktop */
+@media only screen and (min-width: 1200px) {
+  #navbar {
+    background-color: var(--dark-gray);
+  }
+  #navbar > .container {
+    width: 50%;
+    left: 50%;
+  }
+  #navbar .menu-container .menu-dropdown {
+    position: absolute;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    left: 25%;
+    right: 25%;
+    top: 100%;
+    max-height: 0;
+    text-align: center;
+    pointer-events: none;
+    transition: 0.5s ease max-height;
+    overflow: hidden;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 3px 7px 0px;
+    background-color: var(--light-gray);
+    z-index: 5;
+  }
+}
+
 /* End of Navbar */
 
 /* Home */
@@ -388,6 +417,20 @@ body {
   margin-top: 30px;
   width: fit-content;
 }
+
+/* Desktop */
+@media only screen and (min-width: 1200px) {
+  #home {
+    background-color: var(--dark-gray);
+  }
+  #home > .container {
+    width: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--light-gray);
+  }
+}
+
 /* End of Home */
 
 /* Admin */
@@ -464,6 +507,19 @@ body {
 #admin .container .btn-container .secondary-button {
   margin-top: 20px;
 }
+
+/* Desktop */
+@media only screen and (min-width: 1200px) {
+  #admin {
+    background-color: var(--dark-gray);
+  }
+  #admin > .container {
+    width: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
 /* End of Admin */
 
 /* Survey */
@@ -711,6 +767,21 @@ body {
   margin-bottom: -5px;
   text-align: center;
 }
+
+/* Desktop */
+@media only screen and (min-width: 1200px) {
+  #survey {
+    background-color: var(--dark-gray);
+  }
+  #survey > .container {
+    width: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--light-gray);
+    overflow: hidden;
+  }
+}
+
 /* End of Survey */
 
 /* Results */
@@ -772,6 +843,20 @@ body {
   align-items: center;
   margin-top: 20px;
 }
+
+/* Desktop */
+@media only screen and (min-width: 1200px) {
+  #results {
+    background-color: var(--dark-gray);
+  }
+  #results > .container {
+    width: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+  }
+}
+
 /* End of Results */
 
 /* Login */
@@ -831,6 +916,20 @@ body {
 #login .login-container .btn-container .tertiary-button {
   margin-top: 20px;
 }
+
+/* Desktop */
+@media only screen and (min-width: 1200px) {
+  #login {
+    background-color: var(--dark-gray);
+  }
+  #login > .container {
+    width: 50%;
+    left: 50%;
+    transform: translateX(50%);
+    overflow: hidden;
+  }
+}
+
 /* End of Login */
 
 /* Contact Us */
@@ -921,6 +1020,20 @@ body {
 #contact-us .form-container .primary-button {
   margin-top: 30px;
 }
+
+/* Desktop */
+@media only screen and (min-width: 1200px) {
+  #contact-us {
+    background-color: var(--dark-gray);
+  }
+  #contact-us > .container {
+    width: 50%;
+    left: 50%;
+    transform: translateX(50%);
+    overflow: hidden;
+  }
+}
+
 /* End of Contact Us */
 
 /* Footer */
@@ -1013,4 +1126,17 @@ body {
   height: 2px;
   width: 95%;
   background-color: var(--white);
+}
+
+/* Desktop */
+@media only screen and (min-width: 1200px) {
+  #footer {
+    background-color: var(--dark-gray);
+  }
+  #footer > .container {
+    width: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+  }
 }
