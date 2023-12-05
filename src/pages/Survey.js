@@ -6,8 +6,10 @@ import { activities, questions } from "../assets/survey-info";
 import surveyPic from "../assets/survey-pic.jpg";
 import { useLanguageContext } from "../context/LanguageContext";
 import { surveyTranslations } from "../assets/translations";
+import { useNavigate } from "react-router-dom";
 
 const Survey = () => {
+  const navigate = useNavigate();
   const { language } = useLanguageContext();
   // States to hold information inputted by the user
   const [email, setEmail] = useState("");
@@ -134,6 +136,7 @@ const Survey = () => {
         setOtherActivity("");
         setResponses({});
         setCurrentQuestion();
+        navigate("/results");
       })
       .catch((error) => console.log(error));
   };
