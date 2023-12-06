@@ -482,6 +482,16 @@ body {
   padding: 10px 20px;
   background-color: var(--light-gray);
 }
+#admin .container .chart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 250px;
+}
+#admin .container .chart > * {
+  width: 100%;
+}
 #admin .container .messages {
   width: 100%;
   display: flex;
@@ -506,6 +516,7 @@ body {
 }
 #admin .container .btn-container .secondary-button {
   margin-top: 20px;
+  margin-bottom: 30px;
 }
 
 /* Desktop */

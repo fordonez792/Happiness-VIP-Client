@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { useLanguageContext } from "../context/LanguageContext";
 import { resultsTranslations } from "../assets/translations";
+import { happinessState } from "../assets/happiness-state";
 import Footer from "../components/Footer";
 
 const Results = () => {
@@ -12,6 +13,22 @@ const Results = () => {
   const [results, setResults] = useState(
     JSON.parse(localStorage.getItem("results"))
   );
+  const [state, setState] = useState({});
+
+  useEffect(() => {
+    if (results.positive >= 7 && results.positive >= 7) {
+      setState(happinessState[1]);
+    }
+    if (results.positive >= 7 && results.positive < 7) {
+      setState(happinessState[0]);
+    }
+    if (results.positive <= 7 && results.positive <= 7) {
+      setState(happinessState[3]);
+    }
+    if (results.positive <= 7 && results.positive >= 7) {
+      setState(happinessState[2]);
+    }
+  }, [results]);
 
   return (
     <section id="results">
@@ -40,6 +57,10 @@ const Results = () => {
                   : language === "Chinese" && resultsTranslations[2].chinese}
               </p>
               <p>{results.negative}</p>
+            </div>
+            <div>
+              <p>{state.state}</p>
+              <p>{state.feedback}</p>
             </div>
           </article>
         ) : (

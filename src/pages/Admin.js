@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Chart, LinearScale, PointElement } from "chart.js";
+import { Scatter } from "react-chartjs-2";
+
+import Footer from "../components/Footer";
 import { useLanguageContext } from "../context/LanguageContext";
 import { adminTranslations } from "../assets/translations";
 import { useAuthStateContext } from "../context/AuthStateContext";
@@ -7,9 +11,85 @@ import { useAuthStateContext } from "../context/AuthStateContext";
 const Admin = () => {
   const { language } = useLanguageContext();
   const { logOut } = useAuthStateContext();
+  const [results, setResults] = useState([]);
   const [numberSurveys, setNumberSurveys] = useState();
   const [messages, setMessages] = useState([]);
   const [error, setError] = useState("");
+
+  Chart.register(LinearScale);
+  Chart.register(PointElement);
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_URL}responses/get-results`, {
+        headers: { accessToken: localStorage.getItem("accessToken") },
+      })
+      .then((res) => {
+        if (res.data.status === "SUCCESS") {
+          setResults(res.data.allResponses);
+        }
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  const data = {
+    datasets: [
+      {
+        label: "Survey Responses",
+        data: results.map((res) => ({
+          x: res.positive,
+          y: res.negative,
+        })),
+        pointBackgroundColor: "#5085a5",
+      },
+    ],
+  };
+
+  const options = {
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: "Positive",
+        },
+        min: 0,
+        max: 10,
+        stepSize: 1,
+      },
+      y: {
+        title: {
+          display: true,
+          text: "Negative",
+        },
+        min: 0,
+        max: 10,
+        stepSize: 1,
+      },
+    },
+  };
+
+  const plugins = [
+    {
+      beforeDraw: (chart, easing) => {
+        const { ctx, scales } = chart;
+        const xAxis = scales["x"];
+        const yAxis = scales["y"];
+        const xPosition = xAxis.getPixelForValue(7);
+        ctx.strokeStyle = "#17252a";
+        ctx.beginPath();
+        ctx.moveTo(xPosition, yAxis.top);
+        ctx.lineTo(xPosition, yAxis.bottom);
+        ctx.stroke();
+
+        const yPosition = yAxis.getPixelForValue(7);
+        ctx.strokeStyle = "#17252a";
+        ctx.beginPath();
+        ctx.moveTo(xAxis.left, yPosition);
+        ctx.lineTo(xAxis.right, yPosition);
+        ctx.stroke();
+      },
+    },
+  ];
 
   const handleDownload = (e) => {
     axios
@@ -79,6 +159,12 @@ const Admin = () => {
           </div>
         </article>
         <article className="header">
+          <h1>Plot Graph</h1>
+        </article>
+        <article className="chart">
+          <Scatter options={options} data={data} plugins={plugins} />
+        </article>
+        <article className="header">
           <h1>
             {language === "English"
               ? adminTranslations[4].english
@@ -117,6 +203,7 @@ const Admin = () => {
           </div>
         </article>
       </div>
+      <Footer />
     </section>
   );
 };
