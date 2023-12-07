@@ -65,17 +65,17 @@ export const contactUsTranslations = [
   {
     id: 8,
     english: "Email",
-    chinese: "電子郵件!",
+    chinese: "電子郵件",
   },
   {
     id: 9,
     english: "Subject",
-    chinese: "主題!",
+    chinese: "主題",
   },
   {
     id: 10,
     english: "Message",
-    chinese: "信息!",
+    chinese: "信息",
   },
   {
     id: 11,
