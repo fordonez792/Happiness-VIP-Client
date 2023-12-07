@@ -245,12 +245,12 @@ export const resultsTranslations = [
   {
     id: 2,
     english: "Positive:",
-    chinese: "正面的:",
+    chinese: "正向值:",
   },
   {
     id: 3,
     english: "Negative:",
-    chinese: "負面的:",
+    chinese: "負向值",
   },
   {
     id: 4,
@@ -258,9 +258,15 @@ export const resultsTranslations = [
     chinese: "開始新調查",
   },
   {
-    id: 4,
+    id: 5,
     english:
       "You still haven't completed the survey! To receive some feedback first finish it.",
     chinese: "你還沒完成問卷調查！請先完成問卷以獲得反饋意見。",
+  },
+  {
+    id: 6,
+    english:
+      "To receive information about related health promotion activities, you can leave your contact information, and we will periodically notify you about the activities.",
+    chinese: "想獲取相關健康促進活動資訊，可留下聯絡方式，我們將不定期通知活動",
   },
 ];

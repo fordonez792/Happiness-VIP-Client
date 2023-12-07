@@ -61,6 +61,11 @@ const Results = () => {
             <div className="feedback">
               <p>{state.state}</p>
               <p>{state.feedback}</p>
+              <p>
+                {language === "English"
+                  ? resultsTranslations[5].english
+                  : language === "Chinese" && resultsTranslations[5].chinese}
+              </p>
             </div>
           </article>
         ) : (
