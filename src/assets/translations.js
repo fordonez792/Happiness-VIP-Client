@@ -92,11 +92,18 @@ export const homeTranslations = [
   },
   {
     id: 2,
-    english: "SURVEY",
-    chinese: "調查",
+    english: "START",
+    chinese: "開始",
   },
   {
     id: 3,
+    english:
+      "This questionnaire primarily measures your happiness index during activity participation. It will use a 22-item Happiness Index Assessment Form to assess your current feelings on a scale of 1-10. It can help you understand your current physical and mental state and provide some feedback based on your condition.",
+    chinese:
+      "本問卷主要檢測你在參與活動當下的幸福指數，將採用22題幸福指數評估表以1-10分評估當下感受，能夠幫助你了解當下的身心狀況，並根據你的狀況給予一些回饋。",
+  },
+  {
+    id: 4,
     english:
       "Welcome! Get to know more about our project. Take the test and get some personalized feedback.",
     chinese: "歡迎！了解更多關於我們的項目。參加測試，獲得個性化的反饋。",
@@ -144,14 +151,13 @@ export const loginTranslations = [
 export const surveyTranslations = [
   {
     id: 1,
-    english: "SURVEY",
-    chinese: "調查",
+    english: "Happiness Index Assessment",
+    chinese: "幸福指數評估表",
   },
   {
     id: 2,
-    english:
-      "To take the happiness test, mark your answers based on how well each statement describes your feelings.",
-    chinese: "進行幸福測試時，根據每個描述你感受的程度標記你的答案。",
+    english: "Use a scale of 1-10 to evaluate your level of feelings",
+    chinese: "本量尺用1-10評估你的感受程度",
   },
   {
     id: 3,
@@ -187,7 +193,8 @@ export const surveyTranslations = [
     id: 9,
     english:
       "Take our free happiness test in less than 5 minutes and discover more about yourself.",
-    chinese: "花不到5分鐘參加我們的免費幸福測試，發現更多關於自己的資訊。",
+    chinese:
+      "本網站問卷過程約5分鐘，主要了解你當下的情緒狀態，所獲得的數據，將分數經過轉換後，給予相關的幸福活動建議，整體數據將匿名處理僅做調查分析用，請放心作答。",
   },
 ];
 

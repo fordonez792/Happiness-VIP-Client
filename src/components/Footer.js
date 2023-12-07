@@ -4,6 +4,7 @@ import { FaChevronDown } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 import happinessLogo from "../assets/Happiness-Logo.png";
+import happinessLogoChinese from "../assets/Happiness-Logo-Chinese.png";
 import { useAuthStateContext } from "../context/AuthStateContext";
 import { useLanguageContext } from "../context/LanguageContext";
 import { footerTranslations } from "../assets/translations";
@@ -43,7 +44,15 @@ const Footer = () => {
       <div className="container">
         <footer>
           <article className="logo">
-            <img src={happinessLogo} alt="Logo" onClick={() => navigate("/")} />
+            <img
+              src={
+                language === "English"
+                  ? happinessLogo
+                  : language === "Chinese" && happinessLogoChinese
+              }
+              alt="Logo"
+              onClick={() => navigate("/")}
+            />
           </article>
           <article className="language">
             <div className="field-container" onClick={(e) => openDropdown(e)}>

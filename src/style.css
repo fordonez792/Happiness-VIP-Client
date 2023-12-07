@@ -842,6 +842,14 @@ body {
 #results .container .results .item p:first-child {
   font-weight: 700;
 }
+#results .container .results .feedback {
+  margin-bottom: 50px;
+}
+#results .container .results .feedback p:first-child {
+  /* font-weight: 700; */
+  /* font-size: 20px; */
+  text-align: center;
+}
 #results .container .no-results {
   width: 70%;
   margin-bottom: 30px;

@@ -173,21 +173,6 @@ const Survey = () => {
               : language === "Chinese" && surveyTranslations[1].chinese}
           </p>
         </article>
-        <article className="scale">
-          <p>
-            <span>
-              {language === "English"
-                ? surveyTranslations[2].english
-                : language === "Chinese" && surveyTranslations[2].chinese}
-            </span>
-            <span>1</span>·<span>10</span>
-            <span>
-              {language === "English"
-                ? surveyTranslations[3].english
-                : language === "Chinese" && surveyTranslations[3].chinese}
-            </span>
-          </p>
-        </article>
         <form className="survey">
           <div className="question email">
             <h1>
@@ -245,6 +230,21 @@ const Survey = () => {
               })}
             </div>
           </div>
+          <article className="scale">
+            <p>
+              <span>
+                {language === "English"
+                  ? surveyTranslations[2].english
+                  : language === "Chinese" && surveyTranslations[2].chinese}
+              </span>
+              <span>1</span>·<span>10</span>
+              <span>
+                {language === "English"
+                  ? surveyTranslations[3].english
+                  : language === "Chinese" && surveyTranslations[3].chinese}
+              </span>
+            </p>
+          </article>
           {questions.map((question) => {
             const { id, statement } = question;
             return (

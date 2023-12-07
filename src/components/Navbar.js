@@ -3,9 +3,12 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 
 import happinessLogo from "../assets/Happiness-Logo.png";
+import happinessLogoChinese from "../assets/Happiness-Logo-Chinese.png";
 import MenuDropdown from "./MenuDropdown";
+import { useLanguageContext } from "../context/LanguageContext";
 
 const Navbar = () => {
+  const { language } = useLanguageContext();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -16,7 +19,15 @@ const Navbar = () => {
           <nav className="navbar">
             <div className="logo">
               <article className="header">
-                <img src={happinessLogo} alt="" onClick={() => navigate("/")} />
+                <img
+                  src={
+                    language === "English"
+                      ? happinessLogo
+                      : language === "Chinese" && happinessLogoChinese
+                  }
+                  alt=""
+                  onClick={() => navigate("/")}
+                />
               </article>
             </div>
             <div className="menu">

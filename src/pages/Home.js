@@ -23,20 +23,17 @@ const Home = () => {
             </h1>
             <p>
               {language === "English"
-                ? homeTranslations[2].english
-                : language === "Chinese" && homeTranslations[2].chinese}
+                ? homeTranslations[3].english
+                : language === "Chinese" && homeTranslations[3].chinese}
             </p>
           </div>
         </article>
 
         <article className="intro">
           <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem nulla
-            ab quos inventore nesciunt nam error voluptatem autem. Qui autem
-            alias fugit iste saepe, voluptates dolores officia! Accusantium
-            exercitationem iure perferendis deleniti consequuntur et ratione
-            nobis esse maxime eum sequi illum nihil delectus, amet architecto
-            possimus inventore, dolorum commodi repudiandae!
+            {language === "English"
+              ? homeTranslations[2].english
+              : language === "Chinese" && homeTranslations[2].chinese}
           </p>
           <div className="btn-container">
             <div className="primary-button" onClick={() => navigate("/survey")}>

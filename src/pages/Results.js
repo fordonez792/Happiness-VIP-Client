@@ -48,7 +48,7 @@ const Results = () => {
                   ? resultsTranslations[1].english
                   : language === "Chinese" && resultsTranslations[1].chinese}
               </p>
-              <p>{results.positive}</p>
+              <p>{results.positive.toFixed(1)}</p>
             </div>
             <div className="item">
               <p>
@@ -56,9 +56,9 @@ const Results = () => {
                   ? resultsTranslations[2].english
                   : language === "Chinese" && resultsTranslations[2].chinese}
               </p>
-              <p>{results.negative}</p>
+              <p>{results.negative.toFixed(1)}</p>
             </div>
-            <div>
+            <div className="feedback">
               <p>{state.state}</p>
               <p>{state.feedback}</p>
             </div>
