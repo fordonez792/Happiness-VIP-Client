@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
+import { FaArrowRight } from "react-icons/fa";
 
 import Footer from "../components/Footer";
 import { activities, questions } from "../assets/survey-info";
@@ -232,17 +233,19 @@ const Survey = () => {
           </div>
           <article className="scale">
             <p>
-              <span>
+              {/* <span>
                 {language === "English"
                   ? surveyTranslations[2].english
                   : language === "Chinese" && surveyTranslations[2].chinese}
-              </span>
-              <span>1</span>·<span>10</span>
-              <span>
+              </span> */}
+              <span>1</span>
+              <FaArrowRight />
+              <span>10</span>
+              {/* <span>
                 {language === "English"
                   ? surveyTranslations[3].english
                   : language === "Chinese" && surveyTranslations[3].chinese}
-              </span>
+              </span> */}
             </p>
           </article>
           {questions.map((question) => {

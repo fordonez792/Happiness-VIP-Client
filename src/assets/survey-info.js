@@ -157,4 +157,9 @@ export const questions = [
     english: "",
     statement: "21. 我感到生活滿意",
   },
+  {
+    id: 22,
+    english: "",
+    statement: "22. 我親近大自然的程度",
+  },
 ];

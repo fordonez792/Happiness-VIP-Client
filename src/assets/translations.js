@@ -172,7 +172,8 @@ export const surveyTranslations = [
   {
     id: 5,
     english: "What is your email address?",
-    chinese: "你的電子郵件地址是什麼?",
+    chinese:
+      "想獲取相關健康促進活動資訊，可留下聯絡方式，我們將不定期通知活動。",
   },
   {
     id: 6,
@@ -208,8 +209,7 @@ export const footerTranslations = [
     id: 2,
     english:
       "This version of the website is directed towards english speakers .If you prefer Chinese please select the language above.",
-    chinese:
-      "此網站版本主要設計給英文為第一語言者，如果需要請在上方選擇與語言。",
+    chinese: "此網站版本主要設計給中文為第一語言者，如果需要請在上方選擇語言。",
   },
   {
     id: 3,
@@ -255,18 +255,12 @@ export const resultsTranslations = [
   {
     id: 4,
     english: "Start New Survey",
-    chinese: "開始新調查",
+    chinese: "開始新測驗",
   },
   {
     id: 5,
     english:
       "You still haven't completed the survey! To receive some feedback first finish it.",
     chinese: "你還沒完成問卷調查！請先完成問卷以獲得反饋意見。",
-  },
-  {
-    id: 6,
-    english:
-      "To receive information about related health promotion activities, you can leave your contact information, and we will periodically notify you about the activities.",
-    chinese: "想獲取相關健康促進活動資訊，可留下聯絡方式，我們將不定期通知活動",
   },
 ];
