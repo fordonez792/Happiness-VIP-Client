@@ -797,6 +797,52 @@ body {
 
 /* End of Survey */
 
+/* Thank You Modal */
+#thank-you {
+  position: absolute;
+  border-radius: 10px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+#thank-you.active {
+  opacity: 1;
+  pointer-events: all;
+  overflow: visible;
+}
+#thank-you > .container {
+  position: relative;
+  min-height: unset !important;
+  top: 10%;
+  height: 300px;
+  width: 300px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 3px;
+  display: flex;
+  justify-content: center !important;
+  align-items: center !important;
+  z-index: 13 !important;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background-color: var(--white) !important;
+}
+#thank-you .header {
+  top: -10%;
+}
+#thank-you.active .overlay {
+  opacity: 0.8;
+  pointer-events: all;
+  z-index: 12;
+}
+#thank-you .btn-container {
+  height: max-content;
+}
+/* End of Thank You Modal */
+
 /* Results */
 #results {
   position: absolute;

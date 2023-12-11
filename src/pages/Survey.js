@@ -90,13 +90,13 @@ const Survey = () => {
     }
     // Checks that all questions are answered
     const allQuestionsAnswered =
-      Object.keys(responses).length === 21 &&
+      Object.keys(responses).length === 22 &&
       Object.keys(responses).every(
         (questionId) => responses[questionId] !== ""
       );
     // Scrolls to first unanswered question and marks it in red
     if (!allQuestionsAnswered) {
-      const scrollTo = arePreviousQuestionsAnswered(21);
+      const scrollTo = arePreviousQuestionsAnswered(22);
       questionRefs.current[scrollTo].classList.add("error");
       setTimeout(
         () => questionRefs.current[scrollTo].classList.remove("error"),
@@ -118,7 +118,7 @@ const Survey = () => {
         }
 
         // Reset all the sliders back to 1
-        for (let i = 1; i <= 21; i++) {
+        for (let i = 1; i <= 22; i++) {
           questionRefs.current[
             i
           ].children[1].children[0].children[0].style.background = `linear-gradient(to right, var(--blue) 0%,  var(--light-gray) 0%)`;
@@ -130,6 +130,7 @@ const Survey = () => {
           negative: res.data.negative,
         };
         localStorage.setItem("results", JSON.stringify(results));
+        localStorage.setItem("giveThanks", true);
 
         // Reset all forms of input
         setEmail("");

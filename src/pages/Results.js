@@ -5,10 +5,14 @@ import { useLanguageContext } from "../context/LanguageContext";
 import { resultsTranslations } from "../assets/translations";
 import { happinessState } from "../assets/happiness-state";
 import Footer from "../components/Footer";
+import ThankYou from "../components/ThankYou";
 
 const Results = () => {
   const navigate = useNavigate();
   const { language } = useLanguageContext();
+  const [isThankYouOpen, setIsThankYouOpen] = useState(
+    localStorage.getItem("giveThanks") || false
+  );
 
   const [results, setResults] = useState(
     JSON.parse(localStorage.getItem("results"))
@@ -29,6 +33,8 @@ const Results = () => {
       setState(happinessState[2]);
     }
   }, [results]);
+
+  useEffect(() => localStorage.removeItem("giveThanks"));
 
   return (
     <section id="results">
@@ -80,6 +86,10 @@ const Results = () => {
           </div>
         </div>
       </div>
+      <ThankYou
+        isThankYouOpen={isThankYouOpen}
+        setIsThankYouOpen={setIsThankYouOpen}
+      />
       <Footer />
     </section>
   );

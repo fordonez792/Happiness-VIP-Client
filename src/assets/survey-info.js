@@ -110,7 +110,7 @@ export const questions = [
   {
     id: 12,
     english: "",
-    statement: "12. 我感到是種任務",
+    statement: "12. 我完成這項任務",
   },
   {
     id: 13,
