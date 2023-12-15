@@ -53,7 +53,9 @@ const Survey = () => {
   // Makes sure the slider background matches the value of the slider and input
   const handleSlider = (e, questionNumber) => {
     const input = e.target;
-    const progress = (input.value / input.max) * 100 - 5;
+    const progress =
+      ((input.value - input.min) / (input.max - input.min)) * 100;
+    console.log(progress);
     if (input.type === "range") {
       input.style.background = `linear-gradient(to right, var(--blue) ${progress}%,  var(--light-gray) ${progress}%)`;
     }
@@ -249,6 +251,9 @@ const Survey = () => {
               </span> */}
             </p>
           </article>
+          <article className="description">
+            <p>下感受為程度1 需區間移動到其他數值再拉回1</p>
+          </article>
           {questions.map((question) => {
             const { id, statement } = question;
             return (
@@ -274,17 +279,7 @@ const Survey = () => {
                       onTouchEnd={() => setCurrentQuestion(id)}
                     />
                   </div>
-                  <input
-                    type="number"
-                    className="value"
-                    min="1"
-                    max="10"
-                    value={responses[id] || 1}
-                    onChange={(e) => handleSlider(e, id)}
-                    onKeyDown={(e) =>
-                      e.key == "Enter" && setCurrentQuestion(id)
-                    }
-                  />
+                  <div className="value">{responses[id] || 1}</div>
                 </div>
               </div>
             );

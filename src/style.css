@@ -767,6 +767,7 @@ body {
 }
 #survey .container .survey .slider-container .value {
   all: unset;
+  min-width: 25px;
   margin-left: 20px;
   padding: 10px 15px;
   border: 2px solid var(--light-gray);
