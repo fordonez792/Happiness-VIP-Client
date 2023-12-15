@@ -55,7 +55,6 @@ const Survey = () => {
     const input = e.target;
     const progress =
       ((input.value - input.min) / (input.max - input.min)) * 100;
-    console.log(progress);
     if (input.type === "range") {
       input.style.background = `linear-gradient(to right, var(--blue) ${progress}%,  var(--light-gray) ${progress}%)`;
     }
@@ -146,11 +145,11 @@ const Survey = () => {
   };
 
   // Scrolls to first unanswered question, so that questions are answered in order
-  useEffect(() => {
-    if (!currentQuestion) return;
-    const scrollTo = arePreviousQuestionsAnswered(currentQuestion);
-    scrollToQuestion(scrollTo);
-  }, [currentQuestion, setCurrentQuestion]);
+  // useEffect(() => {
+  //   if (!currentQuestion) return;
+  //   const scrollTo = arePreviousQuestionsAnswered(currentQuestion);
+  //   scrollToQuestion(scrollTo);
+  // }, [currentQuestion, setCurrentQuestion]);
 
   return (
     <section id="survey">
