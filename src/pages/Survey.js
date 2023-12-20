@@ -251,7 +251,7 @@ const Survey = () => {
             </p>
           </article>
           <article className="description">
-            <p>下感受為程度1 需區間移動到其他數值再拉回1</p>
+            <p>「量尺可進行滑動或點擊至不同數值」</p>
           </article>
           {questions.map((question) => {
             const { id, statement } = question;
@@ -278,7 +278,7 @@ const Survey = () => {
                       onTouchEnd={() => setCurrentQuestion(id)}
                     />
                   </div>
-                  <div className="value">{responses[id] || 1}</div>
+                  <div className="value">{responses[id] || "→"}</div>
                 </div>
               </div>
             );
