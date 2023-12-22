@@ -20,16 +20,16 @@ const Results = () => {
   const [state, setState] = useState({});
 
   useEffect(() => {
-    if (results.positive >= 7 && results.positive >= 7) {
+    if (results.positive >= 7 && results.negative >= 7) {
       setState(happinessState[1]);
     }
-    if (results.positive >= 7 && results.positive < 7) {
+    if (results.positive >= 7 && results.negative < 7) {
       setState(happinessState[0]);
     }
-    if (results.positive <= 7 && results.positive <= 7) {
+    if (results.positive < 7 && results.negative < 7) {
       setState(happinessState[3]);
     }
-    if (results.positive <= 7 && results.positive >= 7) {
+    if (results.positive < 7 && results.negative >= 7) {
       setState(happinessState[2]);
     }
   }, [results]);
