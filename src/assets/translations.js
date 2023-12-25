@@ -250,7 +250,7 @@ export const resultsTranslations = [
   {
     id: 3,
     english: "Negative:",
-    chinese: "負向值",
+    chinese: "負向值:",
   },
   {
     id: 4,

@@ -39,7 +39,7 @@ const Results = () => {
       x: {
         title: {
           display: true,
-          text: "Positive",
+          text: "正向值",
         },
         min: 0,
         max: 10,
@@ -48,7 +48,7 @@ const Results = () => {
       y: {
         title: {
           display: true,
-          text: "Negative",
+          text: "負向值",
         },
         min: 0,
         max: 10,
