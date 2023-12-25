@@ -879,8 +879,18 @@ body {
   background-color: var(--light-gray);
 }
 #results .container .results {
-  width: 70%;
+  width: 80%;
   margin-bottom: 30px;
+}
+#results .container .chart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 230px;
+}
+#results .container .chart > * {
+  width: 100%;
 }
 #results .container .results .item {
   display: flex;

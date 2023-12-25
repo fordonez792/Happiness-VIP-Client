@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Chart, LinearScale, PointElement } from "chart.js";
+import { Scatter } from "react-chartjs-2";
 
 import { useLanguageContext } from "../context/LanguageContext";
 import { resultsTranslations } from "../assets/translations";
@@ -18,6 +20,65 @@ const Results = () => {
     JSON.parse(localStorage.getItem("results"))
   );
   const [state, setState] = useState({});
+
+  Chart.register(LinearScale);
+  Chart.register(PointElement);
+
+  const data = {
+    datasets: [
+      {
+        label: "Survey Responses",
+        data: [{ x: results.positive, y: results.negative }],
+        pointBackgroundColor: "#5085a5",
+      },
+    ],
+  };
+
+  const options = {
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: "Positive",
+        },
+        min: 0,
+        max: 10,
+        stepSize: 1,
+      },
+      y: {
+        title: {
+          display: true,
+          text: "Negative",
+        },
+        min: 0,
+        max: 10,
+        stepSize: 1,
+      },
+    },
+  };
+
+  const plugins = [
+    {
+      beforeDraw: (chart, easing) => {
+        const { ctx, scales } = chart;
+        const xAxis = scales["x"];
+        const yAxis = scales["y"];
+        const xPosition = xAxis.getPixelForValue(7);
+        ctx.strokeStyle = "#17252a";
+        ctx.beginPath();
+        ctx.moveTo(xPosition, yAxis.top);
+        ctx.lineTo(xPosition, yAxis.bottom);
+        ctx.stroke();
+
+        const yPosition = yAxis.getPixelForValue(7);
+        ctx.strokeStyle = "#17252a";
+        ctx.beginPath();
+        ctx.moveTo(xAxis.left, yPosition);
+        ctx.lineTo(xAxis.right, yPosition);
+        ctx.stroke();
+      },
+    },
+  ];
 
   useEffect(() => {
     if (results.positive >= 7 && results.negative >= 7) {
@@ -48,6 +109,9 @@ const Results = () => {
         </article>
         {results ? (
           <article className="results">
+            <div className="chart">
+              <Scatter options={options} data={data} plugins={plugins} />
+            </div>
             <div className="item">
               <p>
                 {language === "English"
