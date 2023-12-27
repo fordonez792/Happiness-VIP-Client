@@ -109,6 +109,7 @@ const Results = () => {
         </article>
         {results ? (
           <article className="results">
+            <h1>{state.state}</h1>
             <div className="chart">
               <Scatter options={options} data={data} plugins={plugins} />
             </div>
@@ -129,7 +130,6 @@ const Results = () => {
               <p>{results.negative.toFixed(1)}</p>
             </div>
             <div className="feedback">
-              <p>{state.state}</p>
               <p>{state.feedback}</p>
             </div>
           </article>

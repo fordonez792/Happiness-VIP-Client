@@ -106,7 +106,8 @@ export const homeTranslations = [
     id: 4,
     english:
       "Welcome! Get to know more about our project. Take the test and get some personalized feedback.",
-    chinese: "歡迎！了解更多關於我們的項目。參加測試，獲得個性化的反饋。",
+    chinese:
+      "歡迎使用幸福生活網路,本網站提供幸福指 數評估表,幫助您在參與活動的過程中了解當下的身 心狀況,並給予一些回饋。",
   },
 ];
 
