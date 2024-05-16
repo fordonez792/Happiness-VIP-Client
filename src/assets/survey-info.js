@@ -85,81 +85,41 @@ export const questions = [
   {
     id: 7,
     english: "",
-    statement: "7. 我感到身體疲累",
+    statement: "7. 我主動參加活動",
   },
   {
     id: 8,
     english: "",
-    statement: "8. 我感到活力充沛",
+    statement: "8. 我自願參與活動",
   },
   {
     id: 9,
     english: "",
-    statement: "9. 我感到激勵",
+    statement: "9. 我擅長做這件事",
   },
   {
     id: 10,
     english: "",
-    statement: "10. 我對自己感到滿意",
+    statement: "10. 我能發揮所長",
   },
   {
     id: 11,
     english: "",
-    statement: "11. 我在追求我的目標",
+    statement: "11. 我感激我的夥伴",
   },
   {
     id: 12,
     english: "",
-    statement: "12. 我完成這項任務",
+    statement: "12. 我感到有歸屬感",
   },
   {
     id: 13,
     english: "",
-    statement: "13. 我樂意做這件事",
+    statement: "13. 我被團體接納",
   },
   {
     id: 14,
     english: "",
-    statement: "14. 我擅長做這件事",
-  },
-  {
-    id: 15,
-    english: "",
-    statement: "15. 我感到無法勝任",
-  },
-  {
-    id: 16,
-    english: "",
-    statement: "16. 我感激我的夥伴",
-  },
-  {
-    id: 17,
-    english: "",
-    statement: "17. 我感到有歸屬感",
-  },
-  {
-    id: 18,
-    english: "",
-    statement: "18. 我感到被誤解",
-  },
-  {
-    id: 19,
-    english: "",
-    statement: "19. 我感到有意義",
-  },
-  {
-    id: 20,
-    english: "",
-    statement: "20. 我感到心理富足",
-  },
-  {
-    id: 21,
-    english: "",
-    statement: "21. 我感到生活滿意",
-  },
-  {
-    id: 22,
-    english: "",
-    statement: "22. 我親近大自然的程度",
+    statement: "14. 本日參加活動的滿意程度(非常不滿意1，非常滿意5)",
   },
 ];

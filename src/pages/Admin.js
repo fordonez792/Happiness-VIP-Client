@@ -11,7 +11,7 @@ import { useAuthStateContext } from "../context/AuthStateContext";
 const Admin = () => {
   const { language } = useLanguageContext();
   const { logOut } = useAuthStateContext();
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState();
   const [numberSurveys, setNumberSurveys] = useState();
   const [messages, setMessages] = useState([]);
   const [error, setError] = useState("");
@@ -32,11 +32,27 @@ const Admin = () => {
       .catch((error) => console.log(error));
   }, []);
 
+  const getMean = () => {
+    const { positiveSum, negativeSum } = results?.reduce(
+      (acc, obj) => {
+        acc.positiveSum += obj?.positive;
+        acc.negativeSum += obj?.negative;
+        return acc;
+      },
+      { positiveSum: 0, negativeSum: 0 }
+    );
+
+    const positiveMean = positiveSum / results?.length;
+    const negativeMean = negativeSum / results?.length;
+
+    return { positiveMean, negativeMean };
+  };
+
   const data = {
     datasets: [
       {
         label: "Survey Responses",
-        data: results.map((res) => ({
+        data: results?.map((res) => ({
           x: res.positive,
           y: res.negative,
         })),
@@ -74,14 +90,14 @@ const Admin = () => {
         const { ctx, scales } = chart;
         const xAxis = scales["x"];
         const yAxis = scales["y"];
-        const xPosition = xAxis.getPixelForValue(7);
+        const xPosition = xAxis.getPixelForValue(getMean().positiveMean);
         ctx.strokeStyle = "#17252a";
         ctx.beginPath();
         ctx.moveTo(xPosition, yAxis.top);
         ctx.lineTo(xPosition, yAxis.bottom);
         ctx.stroke();
 
-        const yPosition = yAxis.getPixelForValue(7);
+        const yPosition = yAxis.getPixelForValue(getMean().negativeMean);
         ctx.strokeStyle = "#17252a";
         ctx.beginPath();
         ctx.moveTo(xAxis.left, yPosition);
@@ -162,7 +178,9 @@ const Admin = () => {
           <h1>Plot Graph</h1>
         </article>
         <article className="chart">
-          <Scatter options={options} data={data} plugins={plugins} />
+          {results && (
+            <Scatter options={options} data={data} plugins={plugins} />
+          )}
         </article>
         <article className="header">
           <h1>
