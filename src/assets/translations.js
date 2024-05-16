@@ -98,9 +98,9 @@ export const homeTranslations = [
   {
     id: 3,
     english:
-      "This questionnaire primarily measures your happiness index during activity participation. It will use a 22-item Happiness Index Assessment Form to assess your current feelings on a scale of 1-10. It can help you understand your current physical and mental state and provide some feedback based on your condition.",
+      "This questionnaire primarily measures your happiness index during activity participation. It will use a 14-item Happiness Index Assessment Form to assess your current feelings on a scale of 1-10. It can help you understand your current physical and mental state and provide some feedback based on your condition.",
     chinese:
-      "本問卷主要檢測你在參與活動當下的幸福指數，將採用22題幸福指數評估表以1-10分評估當下感受，能夠幫助你了解當下的身心狀況，並根據你的狀況給予一些回饋。",
+      "本問卷主要檢測你在參與活動當下的幸福指數，將採用14題幸福指數評估表以1-10分評估當下感受，能夠幫助你了解當下的身心狀況，並根據你的狀況給予一些回饋。",
   },
   {
     id: 4,
