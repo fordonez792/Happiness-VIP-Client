@@ -256,31 +256,38 @@ const Survey = () => {
           {questions.map((question) => {
             const { id, statement } = question;
             return (
-              <div
-                key={id}
-                className={`question ${
-                  responses[id] == null ? null : "answered"
-                }`}
-                ref={(el) => (questionRefs.current[id] = el)}
-              >
-                <h1>
-                  {statement} <span>*</span>
-                </h1>
-                <div className="slider-container">
-                  <div className="slider">
-                    <input
-                      type="range"
-                      min="1"
-                      max={id === 14 ? 5 : 10}
-                      value={responses[id] || 1}
-                      onChange={(e) => handleSlider(e, id)}
-                      onMouseUp={() => setCurrentQuestion(id)}
-                      onTouchEnd={() => setCurrentQuestion(id)}
-                    />
+              <>
+                {id === 14 && (
+                  <article className="scale">
+                    <p>活動滿意度調查</p>
+                  </article>
+                )}
+                <div
+                  key={id}
+                  className={`question ${
+                    responses[id] == null ? null : "answered"
+                  }`}
+                  ref={(el) => (questionRefs.current[id] = el)}
+                >
+                  <h1>
+                    {statement} <span>*</span>
+                  </h1>
+                  <div className="slider-container">
+                    <div className="slider">
+                      <input
+                        type="range"
+                        min="1"
+                        max={id === 14 ? 5 : 10}
+                        value={responses[id] || 1}
+                        onChange={(e) => handleSlider(e, id)}
+                        onMouseUp={() => setCurrentQuestion(id)}
+                        onTouchEnd={() => setCurrentQuestion(id)}
+                      />
+                    </div>
+                    <div className="value">{responses[id] || "→"}</div>
                   </div>
-                  <div className="value">{responses[id] || "→"}</div>
                 </div>
-              </div>
+              </>
             );
           })}
           <div className="primary-button" onClick={() => handleSubmit()}>
