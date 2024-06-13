@@ -258,9 +258,18 @@ const Survey = () => {
             return (
               <>
                 {id === 14 && (
-                  <article className="scale">
-                    <p>活動滿意度調查</p>
-                  </article>
+                  <>
+                    <article className="scale">
+                      <p>
+                        <span>1</span>
+                        <FaArrowRight />
+                        <span>5</span>
+                      </p>
+                    </article>
+                    <article className="description">
+                      <p>活動滿意度調查</p>
+                    </article>
+                  </>
                 )}
                 <div
                   key={id}
@@ -282,6 +291,7 @@ const Survey = () => {
                         onChange={(e) => handleSlider(e, id)}
                         onMouseUp={() => setCurrentQuestion(id)}
                         onTouchEnd={() => setCurrentQuestion(id)}
+                        onClick={(e) => handleSlider(e, id)}
                       />
                     </div>
                     <div className="value">{responses[id] || "→"}</div>

@@ -120,6 +120,6 @@ export const questions = [
   {
     id: 14,
     english: "",
-    statement: "14. 本日參加活動的滿意程度(非常不滿意1，非常滿意5)",
+    statement: "14. 本日參加活動的滿意程度",
   },
 ];
