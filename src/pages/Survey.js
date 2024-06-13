@@ -19,6 +19,7 @@ const Survey = () => {
   const [responses, setResponses] = useState({});
   // Allow for automatic scrolling to next question
   const [currentQuestion, setCurrentQuestion] = useState();
+  const [activityName, setActivityName] = useState();
   const questionRefs = useRef([]);
 
   // Adds and removes items from the state according to the checkboxes
@@ -194,6 +195,48 @@ const Survey = () => {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
+          <div className="question email">
+            <h1>本日參加活動名稱</h1>
+            <input
+              type="text"
+              placeholder="範例：校園健走活動"
+              value={activityName}
+              onChange={(e) => setActivityName(e.target.value)}
+            />
+          </div>
+          <article className="scale">
+            <p>
+              <span>1</span>
+              <FaArrowRight />
+              <span>5</span>
+            </p>
+          </article>
+          <article className="description">
+            <p>活動滿意度調查</p>
+          </article>
+          <div
+            className={`question ${responses[14] == null ? null : "answered"}`}
+            ref={(el) => (questionRefs.current[14] = el)}
+          >
+            <h1>
+              本日參加活動的滿意程度 <span>*</span>
+            </h1>
+            <div className="slider-container">
+              <div className="slider">
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value={responses[14] || 1}
+                  onChange={(e) => handleSlider(e, 14)}
+                  onMouseUp={() => setCurrentQuestion(14)}
+                  onTouchEnd={() => setCurrentQuestion(14)}
+                  onClick={(e) => handleSlider(e, 14)}
+                />
+              </div>
+              <div className="value">{responses[14] || "→"}</div>
+            </div>
+          </div>
           <div
             className="question activity"
             ref={(el) => (questionRefs.current[0] = el)}
@@ -257,20 +300,6 @@ const Survey = () => {
             const { id, statement } = question;
             return (
               <>
-                {id === 14 && (
-                  <>
-                    <article className="scale">
-                      <p>
-                        <span>1</span>
-                        <FaArrowRight />
-                        <span>5</span>
-                      </p>
-                    </article>
-                    <article className="description">
-                      <p>活動滿意度調查</p>
-                    </article>
-                  </>
-                )}
                 <div
                   key={id}
                   className={`question ${

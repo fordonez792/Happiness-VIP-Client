@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Chart, LinearScale, PointElement } from "chart.js";
 import { Scatter } from "react-chartjs-2";
+import axios from "axios";
 
 import { useLanguageContext } from "../context/LanguageContext";
 import { resultsTranslations } from "../assets/translations";
@@ -20,6 +21,37 @@ const Results = () => {
     JSON.parse(localStorage.getItem("results"))
   );
   const [state, setState] = useState({});
+
+  const [allResults, setAllResults] = useState();
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_URL}responses/get-results`, {
+        headers: { accessToken: localStorage.getItem("accessToken") },
+      })
+      .then((res) => {
+        if (res.data.status === "SUCCESS") {
+          setAllResults(res.data.allResponses);
+        }
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  const getMean = () => {
+    const { positiveSum, negativeSum } = allResults?.reduce(
+      (acc, obj) => {
+        acc.positiveSum += obj?.positive;
+        acc.negativeSum += obj?.negative;
+        return acc;
+      },
+      { positiveSum: 0, negativeSum: 0 }
+    );
+
+    const positiveMean = positiveSum / allResults?.length;
+    const negativeMean = negativeSum / allResults?.length;
+
+    return { positiveMean, negativeMean };
+  };
 
   Chart.register(LinearScale);
   Chart.register(PointElement);
@@ -63,14 +95,14 @@ const Results = () => {
         const { ctx, scales } = chart;
         const xAxis = scales["x"];
         const yAxis = scales["y"];
-        const xPosition = xAxis.getPixelForValue(7);
+        const xPosition = xAxis.getPixelForValue(getMean()?.positiveMean);
         ctx.strokeStyle = "#17252a";
         ctx.beginPath();
         ctx.moveTo(xPosition, yAxis.top);
         ctx.lineTo(xPosition, yAxis.bottom);
         ctx.stroke();
 
-        const yPosition = yAxis.getPixelForValue(7);
+        const yPosition = yAxis.getPixelForValue(getMean()?.negativeMean);
         ctx.strokeStyle = "#17252a";
         ctx.beginPath();
         ctx.moveTo(xAxis.left, yPosition);
@@ -111,7 +143,9 @@ const Results = () => {
           <article className="results">
             <h1>{state.state}</h1>
             <div className="chart">
-              <Scatter options={options} data={data} plugins={plugins} />
+              {allResults ? (
+                <Scatter options={options} data={data} plugins={plugins} />
+              ) : null}
             </div>
             <div className="item">
               <p>

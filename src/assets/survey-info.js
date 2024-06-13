@@ -117,9 +117,9 @@ export const questions = [
     english: "",
     statement: "13. 我被團體接納",
   },
-  {
-    id: 14,
-    english: "",
-    statement: "14. 本日參加活動的滿意程度",
-  },
+  // {
+  //   id: 14,
+  //   english: "",
+  //   statement: "14. 本日參加活動的滿意程度",
+  // },
 ];
