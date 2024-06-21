@@ -90,6 +90,19 @@ const Survey = () => {
       setTimeout(() => questionRefs.current[0].classList.remove("error"), 3000);
       return;
     }
+    if (!activityName) {
+      questionRefs.current[15].scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+      // Adds error and timeout for 3 seconds
+      questionRefs.current[15].classList.add("error");
+      setTimeout(
+        () => questionRefs.current[15].classList.remove("error"),
+        3000
+      );
+      return;
+    }
     // Checks that all questions are answered
     const allQuestionsAnswered =
       Object.keys(responses).length === 14 &&
@@ -110,6 +123,7 @@ const Survey = () => {
     axios
       .post(`${process.env.REACT_APP_URL}responses/create`, {
         email,
+        activityName,
         activitiesSelected,
         responses,
       })
@@ -137,6 +151,7 @@ const Survey = () => {
         // Reset all forms of input
         setEmail("");
         setActivitiesSelected([]);
+        setActivityName("");
         setOtherActivity("");
         setResponses({});
         setCurrentQuestion();
@@ -195,8 +210,13 @@ const Survey = () => {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <div className="question email">
-            <h1>本日參加活動名稱</h1>
+          <div
+            className="question email"
+            ref={(el) => (questionRefs.current[15] = el)}
+          >
+            <h1>
+              本日參加活動名稱 <span>*</span>
+            </h1>
             <input
               type="text"
               placeholder="範例：校園健走活動"
@@ -315,7 +335,7 @@ const Survey = () => {
                       <input
                         type="range"
                         min="1"
-                        max={id === 14 ? 5 : 10}
+                        max="10"
                         value={responses[id] || 1}
                         onChange={(e) => handleSlider(e, id)}
                         onMouseUp={() => setCurrentQuestion(id)}
